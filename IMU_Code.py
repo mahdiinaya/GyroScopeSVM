@@ -49,6 +49,11 @@ while True:
 	gyro_yout = read_word_2c(0x45)
 	gyro_zout = read_word_2c(0x47)
 
+        gyro_xout_scaled = gyro_xout/131
+        gyro_yout_scaled = gyro_yout/131
+        gyro_zout_scaled = gyro_zout/131
+    
+
 	#print "gyro_xout: ", gyro_xout, " scaled: ", (gyro_xout / 131)
 	#print "gyro_yout: ", gyro_yout, " scaled: ", (gyro_yout / 131)
 	#print "gyro_zout: ", gyro_zout, " scaled: ", (gyro_zout / 131)
@@ -71,5 +76,6 @@ while True:
 
 	#print "x rotation: " , get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
 	#print "y rotation: " , get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
-	print str(accel_xout).zfill(6), str(accel_yout).zfill(6), str(accel_zout).zfill(6), str(gyro_xout).zfill(6), str(gyro_yout).zfill(6), str(gyro_zout).zfill(6)
-	time.sleep(1/5.0)
+	#print str(accel_xout).zfill(6), str(accel_yout).zfill(6), str(accel_zout).zfill(6), str(gyro_xout).zfill(6), str(gyro_yout).zfill(6), str(gyro_zout).zfill(6)
+	print str(accel_xout_scaled).zfill(15), str(accel_yout_scaled).zfill(15), str(accel_zout_scaled).zfill(15), str(gyro_xout_scaled).zfill(15), str(gyro_yout_scaled).zfill(15), str(gyro_zout_scaled).zfill(15)
+        time.sleep(1/5.0)
