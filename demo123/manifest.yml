@@ -1,0 +1,8 @@
+applications:
+- path: .
+  memory: 896M
+  instances: 1
+  domain: mybluemix.net
+  name: demo123
+  host: demo123
+  disk_quota: 1024M
