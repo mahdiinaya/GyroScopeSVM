@@ -8,6 +8,14 @@ import time
 power_mgmt_1 = 0x6b
 power_mgmt_2 = 0x6c
 
+stable_x_acc = 0
+stable_y_acc = 0
+stable_z_acc = 0
+
+stable_x_gyro = 0
+stable_y_gyro = 0
+stable_z_gyro = 0
+
 def read_byte(adr):
     return bus.read_byte_data(address, adr)
 
@@ -66,9 +74,9 @@ while True:
 	accel_yout = read_word_2c(0x3d)
 	accel_zout = read_word_2c(0x3f)
 
-	accel_xout_scaled = accel_xout / 16384.0
-	accel_yout_scaled = accel_yout / 16384.0
-	accel_zout_scaled = accel_zout / 16384.0
+	accel_xout_scaled = accel_xout / 16384.0 * 1000
+	accel_yout_scaled = accel_yout / 16384.0 * 1000
+	accel_zout_scaled = accel_zout / 16384.0 * 1000
 
 	#print  "accel_xout: ", accel_xout," scaled: ", accel_xout_scaled
 	#print "accel_yout: ", accel_yout, " scaled: ", accel_yout_scaled
@@ -77,5 +85,5 @@ while True:
 	#print "x rotation: " , get_x_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
 	#print "y rotation: " , get_y_rotation(accel_xout_scaled, accel_yout_scaled, accel_zout_scaled)
 	#print str(accel_xout).zfill(6), str(accel_yout).zfill(6), str(accel_zout).zfill(6), str(gyro_xout).zfill(6), str(gyro_yout).zfill(6), str(gyro_zout).zfill(6)
-	print str(accel_xout_scaled).zfill(15), str(accel_yout_scaled).zfill(15), str(accel_zout_scaled).zfill(15), str(gyro_xout_scaled).zfill(15), str(gyro_yout_scaled).zfill(15), str(gyro_zout_scaled).zfill(15)
+	print str(accel_xout_scaled).zfill(15), str(accel_yout_scaled).zfill(15), str(accel_zout_scaled).zfill(15), str(gyro_xout_scaled).zfill(5), str(gyro_yout_scaled).zfill(5), str(gyro_zout_scaled).zfill(5)
         time.sleep(1/5.0)
